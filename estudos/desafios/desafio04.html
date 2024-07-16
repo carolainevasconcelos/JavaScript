@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 04</title>
+    <style>
+        body {
+            background-color: palegreen;
+            font-family: Arial, Helvetica, sans-serif; 
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.315);
+        }
+
+        #botao {
+            height: 25px;
+            width: 70px;
+            text-align: center;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Vamos contar</h1>
+    </header>
+    <section>
+        <div id="dados">
+            <p>Início: <input type="number" name="inicio" id="txti"></p>
+            <p>Fim: <input type="number" name="fim" id="txtf"></p>
+            <p>Passo: <input type="number" name="passo" id="txtp"></p>
+            <input id="botao" type="button" value="Contar" onclick="testar()">
+        </div>
+        <div id="res">
+            <p>Preparando a contagem...</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Carol Vasconcelos</p>
+    </footer>
+
+    <script>
+        function testar() {
+           var inicio = document.getElementById('txti')
+           var fim = document.getElementById('txtf')
+           var passo = document.getElementById('txtp')
+           var res = document.getElementById('res')
+
+           if (inicio.value.length == 0 || fim.value.length == 0 || passo.value.length == 0) {
+            window.alert('[ERRO] Insira os dados novamente.')
+           } else {
+                res.innerHTML = 'Contando: <br>'
+
+                var i = Number(inicio.value)
+                var f = Number(fim.value)
+                var p = Number(passo.value)
+
+            if (i < f) {
+                for(var c = i; c <= f; c += p) {
+                    res.innerHTML += `${c} \u{1F449}`
+                }
+
+                res.innerHTML += `\u{1F3C1}`
+
+            } else {
+                for(var c = 1; c >= f; c -= p) {
+                    res.innerHTML += `${c} \u{1F449}`
+                }
+            }
+
+            res.innerHTML += `\u{1F3C1}`
+                
+            }
+        }
+    </script>
+</body>
+</html>

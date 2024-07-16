@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 03</title>
+    <style>
+        body {
+            background-color: cornflowerblue;
+            font-family: Arial, Helvetica, sans-serif; 
+        }
+
+        header {
+            color: white;
+            text-align: center;
+        }
+
+        section {
+            background: white;
+            width: 500px;
+            padding: 15px;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.315);
+        }
+
+        #botao {
+            height: 25px;
+            width: 70px;
+            text-align: center;
+        }
+
+        #foto {
+            text-align: center;
+        }
+
+        #imagem {
+            display: block;
+            margin: auto;
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            box-shadow: -2px 5px 20px rgba(0, 0, 0, 0.13);
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificador de idade</h1>
+    </header>
+    <section>
+        <div>
+            <p>Ano de Nascimento: <input type="number" name="ano" id="ano"></p>
+            <p>Sexo: 
+                <input type="radio" name="sex" id="masc" checked>
+                <label for="masc">Masculino</label>
+                <input type="radio" name="sex" id="fem">
+                <label for="fem">Feminino</label>
+            </p>
+            <input id="botao" type="button" value="Verificar"  onclick="verificar()">
+        </div>
+        <div id="foto">
+            <p>Preencha os dados acima para ver o resultado!</p>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; Carol Vasconcelos</p>
+    </footer>
+
+    <script>
+        function verificar() {
+            var data = new Date()
+            var ano = data.getFullYear()
+            var fano = document.getElementById('ano')
+            var foto = document.getElementById('foto')
+
+            if (fano.value.length == 0 || fano.value > ano) {
+                window.alert('[ERRO] Insira os dados novamente.')
+            } else {
+                var fsex =  document.getElementsByName('sex')
+                var idade = ano - Number(fano.value)
+                var genero = ''
+                var img = document.createElement('img')
+                img.setAttribute('id', 'imagem')
+
+                if (fsex[0].checked) {
+                genero = 'Homem';
+                if (idade >= 0 && idade < 18) {
+                    //jovem
+                    img.setAttribute('src', 'img/jovem-h.jpg');
+                } else if (idade >= 18 && idade < 60) {
+                    //adulto
+                    img.setAttribute('src', 'img/adulto-h.jpg');
+                } else {
+                    //idoso
+                    img.setAttribute('src', 'img/idoso-h.jpg');
+                }
+            } else if (fsex[1].checked) {
+                genero = 'Mulher';
+                if (idade >= 0 && idade < 18) {
+                    //jovem
+                    img.setAttribute('src', 'img/jovem-m.jpg');
+                } else if (idade >= 18 && idade < 60) {
+                    //adulto
+                    img.setAttribute('src', 'img/adulto-m.jpg');
+                } else {
+                    //idoso
+                    img.setAttribute('src', 'img/idoso-m.jpg');
+                }
+            }
+            
+            foto.style.textAlign = 'center'
+            foto.innerHTML = `Detectamos ${genero} com ${idade} anos.`
+            foto.appendChild(img)
+
+            }
+        }
+    </script>
+</body>
+</html>

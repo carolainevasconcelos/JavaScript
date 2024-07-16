@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 01</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            background-image: linear-gradient(to right, #007AFF, #00AAFF);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        main {
+            background-color: aliceblue;
+            width: 500px;
+            height: 200px;
+            border-radius: 20px;
+            display: block;
+            margin: auto;
+            margin-top: 25px;
+        }
+
+        h1 {
+            text-align: center;
+            padding: 10px;
+            padding-bottom: 20px;
+        }
+
+        p {
+            padding-left: 10px;
+        }
+
+        #botao {
+            width: 80px;
+            height: 20px;
+            margin-left: 10px;
+        }
+
+        div {
+            font-size: 2em;
+            text-align: center;
+            padding: 25px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <h1>População</h1>
+        <p>País em que você vive: <input type="text" name="pais" id="pais"><input id="botao" type="button" value="Enviar" onclick="verificar()"></p>
+        
+        <div id="res"></div>
+    </main>
+
+    <script>
+        function verificar() {
+            var país = window.document.querySelector('input#pais').value; 
+            var res = window.document.querySelector('div#res');
+            if (país.toLowerCase() == 'brasil'){ // convertido para minúsculas para tornar a comparação insensível a maiúsculas e minúsculas
+                res.innerHTML = ('Você é brasileiro!');
+            } else {
+                res.innerHTML = ('Você é estrangeiro!');
+            }
+        }
+    </script>
+</body>
+</html>
